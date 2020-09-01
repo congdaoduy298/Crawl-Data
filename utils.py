@@ -34,6 +34,19 @@ def getAuthor(browser, authors):
     for auts in authors_list:
         authors.append(auts.text)
 
+def getRate(browser, rates):
+    rates_list = browser.find_elements_by_xpath("//span[@class='minirating']")
+    for rate in rates_list:
+        rates.append(rate.text.split('\n')[-1])
+
+def getDescription(browser, descriptions):
+    # Find more button
+    more_button = browser.find_element_by_xpath("//a[@onclick='swapContent($(this));; return false;']")
+    more_button.click()
+    description = browser.find_element_by_xpath("//div[@id='description']")
+    descriptions.append(description.text[:-7])
+    
+
 def nextPage(browser, flag):
     next_page = browser.find_elements_by_xpath("//a[@class='next_page']")
     if len(next_page) == 0:
