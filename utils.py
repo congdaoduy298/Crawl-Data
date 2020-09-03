@@ -1,6 +1,28 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
+import re 
+
+
+
+def clickButton(browser, button):
+    actions = ActionChains(browser)
+    actions.move_to_element(button).perform()
+    button.click()
+
+def tryFind(driver, link):
+    try:
+        element = driver.find_element_by_xpath(link)
+        return element
+    except NoSuchElementException:
+        return None 
+
+def getIdFromUrl(link):
+    pattern = re.compile(r'\d{3}\d+')
+    id_user = pattern.findall(link)[0]
+    return id_user
 
 def sendKeys(browser):
     email = browser.find_element_by_id("user_email")
@@ -41,10 +63,11 @@ def getRate(browser, rates):
 
 def getDescription(browser, descriptions):
     # Find more button
-    more_button = browser.find_element_by_xpath("//a[@onclick='swapContent($(this));; return false;']")
-    more_button.click()
-    description = browser.find_element_by_xpath("//div[@id='description']")
-    descriptions.append(description.text[:-7])
+    more_button = tryFind(browser, "//a[@onclick='swapContent($(this));; return false;']")
+    more_button = None if more_button is None else more_button.click()
+    description = tryFind(browser, "//div[@id='description']")
+    description = '' if description is None else description.text[:-7] 
+    descriptions.append(description)
     
 
 def nextPage(browser, flag):
