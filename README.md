@@ -20,9 +20,6 @@
 
 # Result 
     
-   Failed to collect data from Chuyện Cổ Tích Dành Cho Người Lớn ...
-    
-   Total running time: 6240s
-
-   Try to collect data from Chuyện Cổ Tích Dành Cho Người Lớn and add to data.json file. 
+     
+  Total running time: 6181s
 

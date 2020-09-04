@@ -67,7 +67,7 @@ def getRate(browser, rates):
 def getDescription(browser, descriptions):
     # Find more button
     more_button = tryFind(browser, "//a[@onclick='swapContent($(this));; return false;']")
-    more_button = None if more_button is None else more_button.click()
+    more_button = None if more_button is None else clickButton(browser, more_button)
     description = tryFind(browser, "//div[@id='description']")
     description = '' if description is None else description.text[:-7] 
     descriptions.append(description)
