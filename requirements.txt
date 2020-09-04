@@ -1,4 +1,2 @@
 selenium
-pandas
-numpy
-
+webdriver-manager

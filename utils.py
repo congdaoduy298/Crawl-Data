@@ -1,7 +1,7 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains
 import re 
 
@@ -18,6 +18,9 @@ def tryFind(driver, link):
         return element
     except NoSuchElementException:
         return None 
+    except StaleElementReferenceException:
+        element = driver.find_element_by_xpath(link)
+        return element
 
 def getIdFromUrl(link):
     pattern = re.compile(r'\d{3}\d+')
@@ -75,5 +78,6 @@ def nextPage(browser, flag):
     if len(next_page) == 0:
         return False
     else: 
-        next_page[0].click()
+        clickButton(browser, next_page[0])
+        # next_page[0].click()
     return True
