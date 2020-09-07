@@ -18,6 +18,8 @@
    
   4. Run file by terminal .
 
+    python crawl_books.py
+
 # Result 
     
      
