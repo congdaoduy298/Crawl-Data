@@ -114,7 +114,7 @@ if __name__ == "__main__":
                 is_vn = is_vietnamese(text, vowels)
                 if is_vn:
                     text = normalize(text)
-                #     # Vietnamese NER by using PhoBert
+                #     # Vietnamese NER by using VnCoreNLP
                     annotated_text = annotator.annotate(text)   
                     result = annotated_text['sentences']
                     get_dict_ner(result, ner_dict)
@@ -129,15 +129,17 @@ if __name__ == "__main__":
                             if hasattr(chunk, 'label'):
                                 entity = ' '.join(c[0] for c in chunk)
                                 entities.append(entity)
+                                # add_to_dict(entity, ner_dict)
 
                     for X in doc.ents:
                         if X.label_ in CHOOSE_LIST:
+                            # add_to_dict(X.text, ner_dict)   
                             for entity in entities:
                                 if X.text in entity:
                                     add_to_dict(entity, ner_dict)
                                     break 
                                 elif entity in X.text:
-                                    add_to_dict(X.text, ner_dict)
+                                    add_to_dict(entity, ner_dict)
                                     break     
                 
                 count += 1
