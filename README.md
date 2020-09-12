@@ -45,31 +45,40 @@
 
   4. File VnCoreNLP-1.1.1.jar (27MB) and folder models (115MB) are placed in the same working folder.
 
-  5. Change current directory 
-
-    $ cp data.json get_ner.py ./VnCoreNLP/
-    
-    $ cd VnCoreNLP/
-
-  4. NLTK Library 
+  5. NLTK Library  (Do not need if use Bert-base model)
 
     $ pip3 install nltk
   
-  5. Spacy Library 
+  6. Spacy Library (Do not need if use Bert-base model)
 
     $ pip3 install spacy
 
     $ python3 -m spacy download en_core_web_sm
 
+
+
 # Run
 
-  1. Run VnCoreNLP server.
+  I. Use NLTK and Spacy
+  
+   1. Run VnCoreNLP server.
 
     $ vncorenlp -Xmx2g <FULL-PATH-to-VnCoreNLP-jar-file> -p 9000 -a "wseg,pos,ner"
-  
-  2. Open new terminal.
+
+   2. Open new terminal.
 
     $ python3 get_ner.py
+
+  II. Use Bert-base 
+
+   1. Get NER with Vietnamese sentences by VnCoreNLP. 
+
+    $ vncorenlp -Xmx2g <FULL-PATH-to-VnCoreNLP-jar-file> -p 9000 -a "wseg,pos,ner"
+
+    $ python3 get_vn_ner.py
+  
+   2. Use GPU of Google Colab and run all code in Bert_NER.ipynb.
+
 
 # REFERENCES
 
