@@ -33,25 +33,23 @@
 
 # Installation
   
-  1. Python 3.4+.
+  1. Python 3.4+ (< 3.8).
 
-  2. Clone VnCoreNLP repository and install vncorenlp.
+  2. Have to install all dependent libraries 
+
+    $ pip3 install -r requirements.txt 
+
+  3. Clone VnCoreNLP repository and install vncorenlp.
 
     $ git clone https://github.com/vncorenlp/VnCoreNLP
-
-    $ pip3 install vncorenlp
   
-  3. Java 1.8+
+  4. Java 1.8+
 
-  4. File VnCoreNLP-1.1.1.jar (27MB) and folder models (115MB) are placed in the same working folder.
+  5. File VnCoreNLP-1.1.1.jar (27MB) and folder models (115MB) are placed in the same working folder.
 
-  5. NLTK Library  (Do not need if use Bert-base model)
-
-    $ pip3 install nltk
+  6. NLTK Library (Do not need if use Bert-base model).
   
-  6. Spacy Library (Do not need if use Bert-base model)
-
-    $ pip3 install spacy
+  7. Spacy Library (Do not need if use Bert-base model).
 
     $ python3 -m spacy download en_core_web_sm
 
